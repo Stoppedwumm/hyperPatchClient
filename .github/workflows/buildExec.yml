@@ -1,0 +1,26 @@
+name: "Build exec"
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: macos-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Install requirements
+              run: pip install -r devRequirements.txt
+            - name: Build
+              run: pyinstaller --onefile __main__.py
+            - name: Rename
+              run: mv dist/__main__ release_osx
+            - name: Upload artifact
+              uses: actions/upload-artifact@v2
+              with:
+                  name: release_osx
+                  path: release_osx
