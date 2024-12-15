@@ -21,5 +21,5 @@ chmod +x release_osx
 then rerun step 2
 
 ## Request a patch
-Go to </patch>
+Go to the [Registry Guidelines](registry)
 
