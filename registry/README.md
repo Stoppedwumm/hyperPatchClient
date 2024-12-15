@@ -37,4 +37,5 @@ a) If you have ```downloadableExec``` enabled, you have to only publish **one as
 b) If you don't have ```downloadableExec``` enabled, you have to have a ```install.sh``` script in the root of the repo
 
 ## Requesting the Patch.
-Almost there! Send a 
+Almost there! Fill out this form:
+<https://form.jotform.com/243494798522066>
