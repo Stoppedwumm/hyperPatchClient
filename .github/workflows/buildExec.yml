@@ -35,6 +35,8 @@ jobs:
               with:
                   name: release_osx
                   path: release_osx
+            - name: ls
+              run: ls
             - name: Release
               uses: softprops/action-gh-release@v1
               env:
