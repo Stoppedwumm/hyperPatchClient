@@ -20,7 +20,7 @@ jobs:
             - name: Rename
               run: mv dist/__main__ release_osx
             - name: Upload artifact
-              uses: actions/upload-artifact@v2
+              uses: actions/upload-artifact@v4
               with:
                   name: release_osx
                   path: release_osx
