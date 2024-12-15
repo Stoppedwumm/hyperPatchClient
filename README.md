@@ -4,4 +4,22 @@ HyperPatch is an CLI tool to quickly search a game and see if there is an mac po
 
 ## Installation
 ### Downloads
-**Releases:** <https://github.com/Stoppedwumm/halflife2patcher/releases/latest>
+1. Go to <https://github.com/Stoppedwumm/hyperPatchClient/actions/workflows/buildExec.yml>
+2. Click on the latest run
+3. Download the only artifact in the artifacts list
+
+### Run it
+1. Unzip the file
+2. Run
+```sh
+./release_osx
+```
+2a) **IF IT FAILS,** run
+```sh
+chmod +x release_osx
+```
+then rerun step 2
+
+## Request a patch
+Go to </patch>
+
