@@ -42,7 +42,7 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                  files: "release_osx"
+                  files: "release_osx/**"
                   tag_name: ${{ github.event.inputs.version }}
                   name: ${{ github.event.inputs.version }}
                   
