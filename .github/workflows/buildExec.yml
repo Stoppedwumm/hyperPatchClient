@@ -1,12 +1,11 @@
 name: "Build exec"
 
 on:
-    push:
-        branches:
-            - main
-    pull_request:
-        branches:
-            - main
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version"
+        required: true
 
 jobs:
     build:
@@ -26,3 +25,22 @@ jobs:
               with:
                   name: release_osx
                   path: release_osx
+    release:
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - uses: actions/checkout@v2
+            - name: Download artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: release_osx
+                  path: release_osx
+            - name: Release
+              uses: softprops/action-gh-release@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  files: "release_osx"
+                  tag_name: ${{ github.event.inputs.version }}
+                  name: ${{ github.event.inputs.version }}
+                  
