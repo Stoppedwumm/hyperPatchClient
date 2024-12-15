@@ -4,9 +4,8 @@ HyperPatch is an CLI tool to quickly search a game and see if there is an mac po
 
 ## Installation
 ### Downloads
-1. Go to <https://github.com/Stoppedwumm/hyperPatchClient/actions/workflows/buildExec.yml>
-2. Click on the latest run
-3. Download the only artifact in the artifacts list
+1. Go to <https://github.com/Stoppedwumm/hyperPatchClient/releases/latest>
+2. Download `release_osx`
 
 ### Run it
 1. Unzip the file
