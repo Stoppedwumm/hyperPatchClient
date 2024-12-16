@@ -9,7 +9,7 @@ Data Types:
 
 ## Routes
 
-| GET /
+> GET /
 ### Description
 Returns all patches in an array.
 
@@ -27,7 +27,7 @@ Returns all patches in an array.
 ]
 ```
 ---
-| GET /patch/:patchid/
+> GET /patch/:patchid/
 ### Description
 Returns patch information.
 
