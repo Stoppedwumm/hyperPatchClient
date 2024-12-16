@@ -1,3 +1,4 @@
+**We are searching for moderators! Sign up [here](https://form.jotform.com/243501924361350)**
 # HyperPatch
 ## So you don't have to go trhough millions of tutorials
 HyperPatch is an CLI tool to quickly search a game and see if there is an mac port.
