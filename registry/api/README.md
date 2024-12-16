@@ -3,7 +3,9 @@
 
 ## General Information
 URL: <https://macpatch-registry.vercel.app>
+
 Host: <https://vercel.com>
+
 Data Types:
 * JSON
 
