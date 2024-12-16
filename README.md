@@ -23,3 +23,5 @@ then rerun step 2
 ## Request a patch
 Go to the [Registry Guidelines](registry)
 
+## Registry API
+Go to our [Registry Documentation](registry/api)
