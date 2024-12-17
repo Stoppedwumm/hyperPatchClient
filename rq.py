@@ -1,6 +1,8 @@
 import requests
 import sys
 import os
+import subprocess
+import tempfile
 url = "https://macpatch-registry.vercel.app/"
 print(len(sys.argv))
 if len(sys.argv) >= 2:
@@ -19,6 +21,7 @@ def search(name):
     return matches
 
 def download(id):
+    tmp = tempfile.mkdtemp(prefix="hyperPatch_")
     r = requests.get(url + "patch/" + id)
     data = r.json()
     if data["downloadableExec"]:
@@ -27,14 +30,17 @@ def download(id):
         # Download
         u = githubData["assets"][0]["browser_download_url"]
         r = requests.get(u)
-        with open(id, "wb") as f:
+        with open(os.path.join(tmp, id), "wb") as f:
             f.write(r.content)
-        os.system("chmod +x " + id)
-        os.system("./" + id)
+        print("CHMOD OUTPUT:", subprocess.run(["chmod +x " + os.path.join(tmp, id)], shell=True).stdout)
+        subprocess.run(["./" + os.path.join(tmp, id)], shell=True)
     else:
         print("Not downloadable")
         # Try to clone
-        os.system("git clone " + data["github"])
-        os.system("cd " + id + "&& chmod +x install.sh && ./install.sh")
+        print("GIT CLONE OUTPUT:", subprocess.run(["git clone" + data["github"]], shell=True).stdout)
+        repoName = data["github"].split("/")[-1]
+        print("INSTALL SCRIPT OUTPUT:", subprocess.run(["cd" + os.path.join(tmp, repoName) + "&& chmod +x install.sh && ./install.sh"], shell=True))
+    print("LIST:", subprocess.run(["ls " + tmp], shell=True).stdout)
+    subprocess.run(["rm -rf " + tmp], shell=True)
     # https://api.github.com/repos/Stoppedwumm/halflife2patcher/releases/latest
     
