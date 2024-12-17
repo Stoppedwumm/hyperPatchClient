@@ -21,6 +21,30 @@ def search(name):
     return matches
 
 def download(id):
+    # Ask user for permissions
+    while True:
+        ex = input("Are you sure you want to install this patch? This will run code and cmd commands. Use C to see these commands (y/n/c) ")
+        if ex == "n":
+            print("Patch aborted")
+            exit(0)
+        elif ex == "c":
+            print("Commands:")
+            print("If the patch has prebuilt binaries:")
+            print("chmod +x [TEMPDIR]/[EXECUTABLE]")
+            print("./[TEMPDIR]/[EXECUTABLE]")
+            print("Else:")
+            print("git clone [GITHUB]")
+            print("cd [TEMPDIR]/[REPO]")
+            print("chmod +x install.sh")
+            print("./install.sh")
+            print("For all:")
+            print("rm -rf [TEMPDIR]")
+        elif ex == "y":
+            break
+        else:
+            print("Invalid input")
+
+
     tmp = tempfile.mkdtemp(prefix="hyperPatch_")
     r = requests.get(url + "patch/" + id)
     data = r.json()
