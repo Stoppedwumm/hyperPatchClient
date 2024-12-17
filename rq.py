@@ -64,7 +64,7 @@ def download(id):
     else:
         print("Not downloadable")
         # Try to clone
-        print("GIT CLONE OUTPUT:", subprocess.run(["git clone " + data["github"]], shell=True).stdout)
+        print("GIT CLONE OUTPUT:", subprocess.run(["cd " + tmp + "&& git clone " + data["github"]], shell=True).stdout)
         repoName = data["github"].split("/")[-1]
         print("INSTALL SCRIPT OUTPUT:", subprocess.run(["cd" + os.path.join(tmp, repoName) + "&& chmod +x install.sh && ./install.sh"], shell=True))
     print("LIST:", subprocess.run(["ls " + tmp], shell=True).stdout)
