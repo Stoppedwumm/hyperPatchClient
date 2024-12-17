@@ -28,10 +28,12 @@ def download(id):
             print("Patch aborted")
             exit(0)
         elif ex == "c":
+            print("=======================================")
             print("Commands:")
             print("If the patch has prebuilt binaries:")
             print("chmod +x [TEMPDIR]/[EXECUTABLE]")
-            print("./[TEMPDIR]/[EXECUTABLE]")
+            print("cd [TEMPDIR]")
+            print("./[EXECUTABLE]")
             print("Else:")
             print("git clone [GITHUB]")
             print("cd [TEMPDIR]/[REPO]")
@@ -39,6 +41,7 @@ def download(id):
             print("./install.sh")
             print("For all:")
             print("rm -rf [TEMPDIR]")
+            print("=======================================")
         elif ex == "y":
             break
         else:
@@ -57,7 +60,7 @@ def download(id):
         with open(os.path.join(tmp, id), "wb") as f:
             f.write(r.content)
         print("CHMOD OUTPUT:", subprocess.run(["chmod +x " + os.path.join(tmp, id)], shell=True).stdout)
-        subprocess.run(["./" + os.path.join(tmp, id)], shell=True)
+        subprocess.run(["cd " + tmp + "&& ./" + id], shell=True)
     else:
         print("Not downloadable")
         # Try to clone
@@ -65,6 +68,7 @@ def download(id):
         repoName = data["github"].split("/")[-1]
         print("INSTALL SCRIPT OUTPUT:", subprocess.run(["cd" + os.path.join(tmp, repoName) + "&& chmod +x install.sh && ./install.sh"], shell=True))
     print("LIST:", subprocess.run(["ls " + tmp], shell=True).stdout)
+    print(tmp)
     subprocess.run(["rm -rf " + tmp], shell=True)
     # https://api.github.com/repos/Stoppedwumm/halflife2patcher/releases/latest
     
