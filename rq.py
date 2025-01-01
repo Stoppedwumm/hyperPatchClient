@@ -49,6 +49,7 @@ def download(id):
 
 
     tmp = tempfile.mkdtemp(prefix="hyperPatch_")
+    requests.get(url + "registerDownload/" + id)
     r = requests.get(url + "patch/" + id)
     data = r.json()
     if data["downloadableExec"]:
