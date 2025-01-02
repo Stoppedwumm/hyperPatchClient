@@ -48,7 +48,7 @@ def download(id):
         else:
             print("Invalid input")
 
-
+    start = timeit.default_timer()
     tmp = tempfile.mkdtemp(prefix="hyperPatch_")
     requests.get(url + "registerDownload/" + id)
     r = requests.get(url + "patch/" + id)
@@ -74,5 +74,7 @@ def download(id):
     print(tmp)
     subprocess.run(["rm -rf " + tmp], shell=True)
     print("Deletion complete")
+    end = timeit.default_timer()
+    print("Patched in", end - start, "seconds")
     # https://api.github.com/repos/Stoppedwumm/halflife2patcher/releases/latest
     
