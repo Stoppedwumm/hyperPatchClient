@@ -3,6 +3,7 @@ import sys
 import os
 import subprocess
 import tempfile
+import timeit
 url = "https://macpatch-registry.vercel.app/"
 print(len(sys.argv))
 if len(sys.argv) >= 2:
@@ -69,7 +70,9 @@ def download(id):
         repoName = data["github"].split("/")[-1]
         print("INSTALL SCRIPT OUTPUT:", subprocess.run(["cd " + os.path.join(tmp, repoName) + " && chmod +x install.sh && ./install.sh"], shell=True))
     print("LIST:", subprocess.run(["ls " + tmp], shell=True).stdout)
+    print("Deleting temp...")
     print(tmp)
     subprocess.run(["rm -rf " + tmp], shell=True)
+    print("Deletion complete")
     # https://api.github.com/repos/Stoppedwumm/halflife2patcher/releases/latest
     
