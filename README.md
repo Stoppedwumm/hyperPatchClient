@@ -20,6 +20,9 @@ chmod +x release_osx
 ```
 then rerun step 2
 
+3. Run a test patch
+Type in "test" into the search prompt and select "Text Adventure".
+
 ## Request a patch
 Go to the [Registry Guidelines](registry)
 
