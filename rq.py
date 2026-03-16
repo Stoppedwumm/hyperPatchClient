@@ -5,7 +5,6 @@ import subprocess
 import tempfile
 import timeit
 url = "https://macpatch-registry.vercel.app/"
-print(len(sys.argv))
 if len(sys.argv) >= 2:
     if sys.argv[1] == "--dev":
         url = "http://localhost:3000/"
